@@ -4,6 +4,7 @@ class szyfr():
     import random
     tekst = input("Podaj hasło do zaszyfrownaia: ")
     for i in range(len(tekst)):
+      print('Done',i,"/",len(tekst), end="\r")
       a = random.randint(1,9)
       kod = ord(tekst[i])+a
       if len(str(kod))==2:
@@ -13,13 +14,18 @@ class szyfr():
     print(cos)
 
   def odszyfr():
+    wynik = ""
     cos = input("odszyfruj: ")
-    b = int(cos[0])
+    
     for i in range(len(cos)//4):
-      b = int(cos[i*4])
-      cos= str(int(cos) - b)
-      litera = cos[i*3+1]+cos[i*3+2]+cos[i*3+3]
-      litera = int(litera)
-      print(chr(litera))
+      print(cos)
+      print(-(i*3))
+      litera = cos[(i*4+3)*-1]+cos[(i*4+2)*-1]+cos[(i*4+1)*-1]
+      
+      litera = int(litera) - int(cos[(i*4+4)*-1])
+      litera = chr(litera)
+      print(litera)
+      wynik = wynik+litera
+    print(wynik )
 # chr() numer -> znak
 # ord() znak -> numer
